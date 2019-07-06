@@ -68,6 +68,12 @@ namespace CharityOrganizations.CoreModels
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.HasOne(d => d.Grantee)
+                    .WithMany(p => p.GranteeService)
+                    .HasForeignKey(d => d.GranteeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_GranteeService_ToTable_Grantee");
+
                 entity.HasOne(d => d.Organization)
                     .WithMany(p => p.GranteeService)
                     .HasForeignKey(d => d.OrganizationId)
