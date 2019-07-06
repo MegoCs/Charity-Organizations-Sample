@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CharityOrganizations.CoreModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace CharityOrganizations
 {
@@ -33,6 +35,8 @@ namespace CharityOrganizations
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            var connection = Configuration.GetConnectionString("MainDbConnection");
+            services.AddDbContext<CharityOrganizationsContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
