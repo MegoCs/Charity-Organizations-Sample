@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CharityOrganizations.CoreModels
 {
@@ -11,6 +11,7 @@ namespace CharityOrganizations.CoreModels
         }
 
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
 
         public virtual ICollection<Grantee> Grantee { get; set; }
