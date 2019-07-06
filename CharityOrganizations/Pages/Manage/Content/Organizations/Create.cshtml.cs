@@ -1,10 +1,9 @@
 ﻿using CharityOrganizations.CoreModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 
-namespace CharityOrganizations.Pages.Manage.Content.Grantees
+namespace CharityOrganizations.Pages.Manage.Content.Organizations
 {
     public class CreateModel : PageModel
     {
@@ -17,12 +16,11 @@ namespace CharityOrganizations.Pages.Manage.Content.Grantees
 
         public IActionResult OnGet()
         {
-            ViewData["CityId"] = new SelectList(_context.City, "Id", "Name");
             return Page();
         }
 
         [BindProperty]
-        public Grantee Grantee { get; set; }
+        public Organization Organization { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -31,7 +29,7 @@ namespace CharityOrganizations.Pages.Manage.Content.Grantees
                 return Page();
             }
 
-            _context.Grantee.Add(Grantee);
+            _context.Organization.Add(Organization);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

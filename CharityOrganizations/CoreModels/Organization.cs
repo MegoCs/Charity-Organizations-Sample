@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CharityOrganizations.CoreModels
 {
@@ -9,9 +9,11 @@ namespace CharityOrganizations.CoreModels
         {
             GranteeService = new HashSet<GranteeService>();
         }
-
+        [Required]
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Address { get; set; }
 
         public virtual ICollection<GranteeService> GranteeService { get; set; }
