@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CharityOrganizations.CoreModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using CharityOrganizations.CoreModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace CharityOrganizations
 {
@@ -35,7 +30,7 @@ namespace CharityOrganizations
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            var connection = Configuration.GetConnectionString("MainDbConnection");
+            string connection = Configuration.GetConnectionString("MainDbConnection");
             services.AddDbContext<CharityOrganizationsContext>(options => options.UseSqlServer(connection));
         }
 

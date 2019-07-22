@@ -12,13 +12,18 @@ namespace CharityOrganizations.CoreModels
 
         public int Id { get; set; }
         [Required]
+        [Display(Name = "الاسم")]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "الرقم القومي")]
         public string NationalId { get; set; }
+        [Display(Name = "العنوان")]
         public string Address { get; set; }
         [Required]
+        [Display(Name = "المدينة")]
         public int CityId { get; set; }
         [Required]
+        [Display(Name = "افراد الاسرة")]
         public int FamilySize { get; set; }
 
         public virtual City City { get; set; }

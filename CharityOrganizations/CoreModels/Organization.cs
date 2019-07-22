@@ -14,7 +14,9 @@ namespace CharityOrganizations.CoreModels
 
         public int Id { get; set; }
         [Required]
+        [Display(Name = "اسم الجمعية")]
         public string Name { get; set; }
+        [Display(Name = "العنوان")]
         public string Address { get; set; }
 
         public virtual ICollection<GranteeService> GranteeService { get; set; }
