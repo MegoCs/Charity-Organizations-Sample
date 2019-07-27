@@ -6,9 +6,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>City</h4>
+<h1>انشاء مدينة جديدة</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -20,14 +18,14 @@
                 <span asp-validation-for="City.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="انشاء" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">العودة الى القائمة</a>
 </div>
 
 @section Scripts {
