@@ -25,7 +25,7 @@ namespace CharityOrganizations.CoreModels
         [Required]
         [Display(Name = "افراد الاسرة")]
         public int FamilySize { get; set; }
-
+        [Display(Name = "المدينة")]
         public virtual City City { get; set; }
         public virtual ICollection<GranteeService> GranteeService { get; set; }
     }
