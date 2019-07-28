@@ -19,6 +19,7 @@ namespace CharityOrganizations.CoreModels
         [Display(Name = "الجمعية")]
         public int OrganizationId { get; set; }
         [Display(Name = "وقت تسجيل الخدمة")]
+        [DataType(DataType.Date)]
         public DateTime CreatedAt { get; set; }
         [Display(Name = "مضيف الخدمة")]
         public string CreatedBy { get; set; }

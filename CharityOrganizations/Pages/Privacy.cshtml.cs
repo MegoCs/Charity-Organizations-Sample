@@ -9,8 +9,9 @@ namespace CharityOrganizations.Pages
 {
     public class PrivacyModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return Redirect("/Index");
         }
     }
 }

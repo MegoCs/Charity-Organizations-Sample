@@ -11,6 +11,18 @@
 <p>
     <a asp-page="Create">اضافة مساعدة لشخص جديد</a>
 </p>
+
+<form>
+    <p>
+        <div class="form-group">
+            نوع الخدمة: <input type="text" asp-for="ServiceName" />
+            اسم الحالة: <input type="text" asp-for="GranteeName" />
+            الرقم القومي: <input type="text" asp-for="GranteeNationalId" />
+            <input type="submit" value="بحث" class="btn btn-primary" />
+        </div>
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -29,39 +41,49 @@
             <th>
                 @Html.DisplayNameFor(model => model.GranteeService[0].CreatedAt)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GranteeService[0].CreatedBy)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.GranteeService) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Grantee.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Organization.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServiceName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServiceComment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">تعديل</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">تفاصيل</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.GranteeService)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grantee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organization.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceComment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">تعديل</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">تفاصيل</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.GranteeService.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.GranteeService.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-pageIndex="@(Model.GranteeService.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    السابق
+</a>
+<a asp-page="./Index"
+   asp-route-pageIndex="@(Model.GranteeService.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    التالي
+</a>
